@@ -1,12 +1,6 @@
-import express from "express";
+import app from "./app";
 
-const app = express();
-
-app.get("/", (req, res) => {
-  return res.send("Online");
-});
-
-const port = 3001;
+const port = process.env.PORT || 3001;
 app.listen(port, (): void => {
-  console.log(`✅ Server is running on port ${port}`);
+  console.log(`✅ Server is running on port ${port}`.green);
 });
