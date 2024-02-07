@@ -22,52 +22,28 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
-const UserSchema = new mongoose_1.Schema({
+const PostSchema = new mongoose_1.Schema({
     name: {
         type: String,
         required: true,
     },
-    username: {
+    banner: {
         type: String,
         required: true,
     },
-    email: {
+    title: {
         type: String,
         required: true,
     },
-    password: {
+    text: {
         type: String,
         required: true,
     },
-    avatar: {
-        type: String,
-        required: true,
-    },
-    background: {
-        type: String,
-        required: true,
-    },
-    fullPermission: {
-        type: Boolean,
-        default: false,
-    },
-    points: {
-        type: Number,
-        default: 0,
-    },
-    follows: [
+    likes: [
         {
             userId: {
-                type: String,
-                required: true,
-            },
-            userIdName: {
                 type: String,
                 required: true,
             },
@@ -77,13 +53,41 @@ const UserSchema = new mongoose_1.Schema({
             },
         },
     ],
-    followed: [
+    comments: [
         {
-            id: {
+            idComment: {
                 type: String,
                 required: true,
             },
-            idName: {
+            userId: {
+                type: String,
+                required: true,
+            },
+            message: {
+                type: String,
+                required: true,
+            },
+            sdasdasd: {
+                type: String,
+                required: true,
+            },
+            userIdName: {
+                type: String,
+                required: true,
+            },
+            Testcoment: {
+                type: String,
+                required: true,
+            },
+            userIdUsername: {
+                type: String,
+                required: true,
+            },
+            testcoment877: {
+                type: String,
+                required: true,
+            },
+            userIdAvatar: {
                 type: String,
                 required: true,
             },
@@ -93,39 +97,27 @@ const UserSchema = new mongoose_1.Schema({
             },
         },
     ],
-    createdAt: {
+    tags: [
+        {
+            tagName: {
+                type: String,
+                required: true,
+            },
+        },
+    ],
+    links: [
+        {
+            link: {
+                type: String,
+                required: true,
+            },
+        },
+    ],
+    createAt: {
         type: Date,
         default: Date.now,
     },
-    notification: [
-        {
-            id: {
-                type: String,
-                required: true,
-            },
-            title: {
-                type: String,
-                required: true,
-            },
-            createdAt: {
-                type: Date,
-                default: Date.now,
-            },
-        },
-    ],
 });
-UserSchema.pre("save", async function (next) {
-    if (!this.isModified("password"))
-        return next();
-    try {
-        const hashedPassword = await bcrypt_1.default.hash(this.password, 10);
-        this.password = hashedPassword;
-        next();
-    }
-    catch (error) {
-        return console.error(error);
-    }
-});
-const UserModel = mongoose_1.default.model("User", UserSchema);
-exports.default = UserModel;
-//# sourceMappingURL=User.js.map
+const PostModel = mongoose_1.default.model("Post", PostSchema);
+exports.default = PostModel;
+//# sourceMappingURL=Posts.js.map

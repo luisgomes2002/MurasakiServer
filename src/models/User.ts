@@ -4,23 +4,22 @@ import bcrypt from "bcrypt";
 interface IFollow {
   userId: string;
   userIdName: string;
-  created?: Date;
+  created: Date;
 }
 
 interface IFollowed {
   id: string;
   idName: string;
-  createdAt?: Date;
+  createdAt: Date;
 }
 
 interface INotification {
   id: string;
   title: string;
-  createdAt?: Date;
+  createdAt: Date;
 }
 
 interface IUserDocument extends Document {
-  _id: string;
   name: string;
   username: string;
   email: string;
@@ -36,10 +35,6 @@ interface IUserDocument extends Document {
 }
 
 const UserSchema = new Schema<IUserDocument>({
-  _id: {
-    type: String,
-    required: true,
-  },
   name: {
     type: String,
     required: true,

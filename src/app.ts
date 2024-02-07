@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDatabase from "./database/database";
 import router from "./routes/index";
 import UserModel from "./models/User";
+import PostModel from "./models/Posts";
 
 export * from "colors";
 
