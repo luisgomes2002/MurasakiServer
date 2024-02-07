@@ -27,6 +27,7 @@ interface ILinks {
 }
 
 interface IPostDocument extends Document {
+  user: Schema.Types.ObjectId;
   name: string;
   banner: string;
   title: string;
@@ -39,8 +40,9 @@ interface IPostDocument extends Document {
 }
 
 const PostSchema = new Schema<IPostDocument>({
-  name: {
-    type: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
   banner: {

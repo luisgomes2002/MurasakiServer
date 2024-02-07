@@ -18,21 +18,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const dotenv_1 = __importDefault(require("dotenv"));
+require("dotenv/config");
 const cors_1 = __importDefault(require("cors"));
 const database_1 = __importDefault(require("./database/database"));
 const index_1 = __importDefault(require("./routes/index"));
-const User_1 = __importDefault(require("./models/User"));
 __exportStar(require("colors"), exports);
-dotenv_1.default.config();
 const app = (0, express_1.default)();
 (0, database_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(index_1.default);
-app.get("/", async (req, res) => {
-    const users = await User_1.default.find();
-    return res.json(users);
-});
 exports.default = app;
 //# sourceMappingURL=app.js.map
