@@ -1,8 +1,12 @@
-const addNumber = (a: number, b: number) => {
-  return a * b;
-};
-console.log(addNumber(2, 2));
-console.log(addNumber(4, 4));
-console.log(addNumber(6, 4));
-console.log(addNumber(6, 10));
-console.log(addNumber(8, 10));
+import express from "express";
+
+const app = express();
+
+app.get("/", (req, res) => {
+  return res.send("Online");
+});
+
+const port = 3001;
+app.listen(port, (): void => {
+  console.log(`✅ Server is running on port ${port}`);
+});
