@@ -2,6 +2,15 @@ import userRepositories from "../repositories/user.repositories";
 import bcrypt from "bcrypt";
 import authServices from "./auth.services";
 
+interface UserParams {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  avatar: string;
+  background: string;
+}
+
 const createUserService = async ({
   name,
   username,
@@ -9,14 +18,7 @@ const createUserService = async ({
   password,
   avatar,
   background,
-}: {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  avatar: string;
-  background: string;
-}) => {
+}: UserParams) => {
   if (!username || !name || !email || !password || !avatar || !background)
     throw new Error("Envie todos os campos para cadastro");
 

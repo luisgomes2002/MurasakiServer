@@ -28,7 +28,6 @@ interface ILinks {
 
 interface IPostDocument extends Document {
   user: Schema.Types.ObjectId;
-  name: string;
   banner: string;
   title: string;
   text: string;
@@ -83,23 +82,11 @@ const PostSchema = new Schema<IPostDocument>({
         type: String,
         required: true,
       },
-      sdasdasd: {
-        type: String,
-        required: true,
-      },
       userIdName: {
         type: String,
         required: true,
       },
-      Testcoment: {
-        type: String,
-        required: true,
-      },
       userIdUsername: {
-        type: String,
-        required: true,
-      },
-      testcoment877: {
         type: String,
         required: true,
       },
